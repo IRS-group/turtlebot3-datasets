@@ -27,7 +27,7 @@ out_bag_file = sys.argv[3]
 print('Applying offset of {:f} to frames which parent is {}'.format(offset, PARENT_FRAME))
 
 out_bag = rosbag.Bag( open(out_bag_file, 'wb'), mode='w', allow_unindexed=False )
-with rosbag.Bag( open(in_bag_file), mode='r', allow_unindexed=False ) as in_bag:
+with rosbag.Bag( open(in_bag_file,'rb'), mode='r', allow_unindexed=False ) as in_bag:
     try:
         import progressbar
     except:
@@ -43,10 +43,10 @@ with rosbag.Bag( open(in_bag_file), mode='r', allow_unindexed=False ) as in_bag:
             bar.update(msg_counter)
 
         if topic == "/tf":
-            for idx, t in enumerate(msg.transforms):
+            for idx, transf in enumerate(msg.transforms):
                 if msg.transforms[idx].header.frame_id == PARENT_FRAME:
                     msg.transforms[idx].header.stamp -= rospy.Duration(offset)
-            out_bag.write(topic, msg, msg.transforms[0].header.stamp)
+            out_bag.write(topic, msg, t)
 
         elif msg._has_header:
             out_bag.write(topic, msg, msg.header.stamp)
