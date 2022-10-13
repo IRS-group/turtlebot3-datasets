@@ -57,25 +57,28 @@ First, some things to know:
 2. Install gdown
     `sudo pip install gdown`
 
-3. `git clone https://github.com/irob-ist/turtlebot3_datasets.git` into your ROS workspace
+3. `git clone https://github.com/IRS-group/turtlebot3-datasets.git` into your ROS workspace
 
 4. Build with catkin:
     `cd ~/catkin_ws && catkin_make && source ~/catkin_ws/devel/setup.bash`
 
 5. Download the dataset (the map is already in the `data` directory, this downloads the rosbag):
     `roscd turtlebot3_datasets/scripts && bash download_dataset.sh`
+    
+6. Start ROS
+    `roscore`
 
-6. Run a static transform publisher to connect the ground-truth and map frames (you can also add as a node to your launch file):
-    `roscore && rosrun turtlebot3_datasets publish_initial_tf.sh map # other frames can be used`
+7. Run a static transform publisher to connect the ground-truth and map frames (you can also add as a node to your launch file):
+    `source ~/catkin_ws/devel/setup.bash && rosrun turtlebot3_datasets publish_initial_tf.sh map`
 
-7. Launch the description launch file:
-    `roslaunch turtlebot3_datasets turtlebot3_description.launch`
+8. Launch the description launch file:
+    `source ~/catkin_ws/devel/setup.bash && roslaunch turtlebot3_datasets turtlebot3_description.launch`
 
-8. Launch map server 
-    `rosrun map_server map_server ~/catkin_ws/src/turtlebot3_datasets/data/map.yaml`
+9. Launch map server 
+    `rosrun map_server map_server ~/catkin_ws/src/turtlebot3-datasets/data/map.yaml`
 
-9. Launch amcl
+10. Launch amcl
     `roslaunch turtlebot3_navigation amcl.launch`
 
-9. Play the bag
-    `source ~/catkin_ws/devel/setup.bash && roscd turtlebot3_datasets/data && rosbag play --clock fixed_slam_easy.bag`
+11. Play the bag
+    `cd ~/catkin_ws/src/turtlebot3-datasets/data && rosbag play --clock fixed_slam_easy.bag`
