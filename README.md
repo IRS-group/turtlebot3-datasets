@@ -1,10 +1,10 @@
 # turtlebot3_datasets
 
-This package provides helper scripts to download and use datasets for the [Introduction to Robotics class](https://irob-ist.github.io/introduction-robotics/).
+This package provides helper scripts to download and use datasets for the [Introduction to Robotics class](https://IRS-group.github.io/introduction-robotics/).
 
 The datasets were captured on a [Turtlebot 3 Waffle Pi](http://www.robotis.us/turtlebot-3-waffle-pi/).
 
-This guide assumes that you have followed the previous [tutorials](https://irob-ist.github.io/introduction-robotics/).
+This guide assumes that you have followed the previous [tutorials](https://IRS-group.github.io/introduction-robotics/).
 
 ## Dataset information
 
